@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/app.css">
+    <title>YouTube Downloader</title>
+</head>
+<body>
+    <h1>YouTube Downloader</h1>
+    <form action="/getinfo" method="GET">
+        <label for="input">Enter YouTube Link</label>
+        <input type="text" name="input" value="<% if(value) { %> <%= value %> <% } %>" placeholder="Enter Download Link" class="input-box" required>
+        <input type="submit" class="getinfo" value="Download Video">
+    </form>
+    <% if (thumbnail) { %>
+        <img src="<%= thumbnail.url %>" >
+    <% } %>
+    <% if (title) { %>
+    <h4> <%= title %> </h4>
+    <% } %>
+    <% if (formats) { %>
+    <form action="/download" method="GET">
+    <input type="hidden" name="value" value="<%= value %>">
+    <select name="itag">
+    <% for(var i = 0; i < formats.length; i++) { %>
+    <% if(formats[i].container == "mp4" && formats[i].qualityLabel != null && formats[i].hasAudio == true && formats[i].hasVideo == true) { %>
+    <option value= "<%= formats[i].itag %>" > <%= formats[i].container %> - <%= formats[i].qualityLabel  %> </option>
+    <% } %>
+    <% } %>
+    </select>
+    <input type="submit" value="Download Video" class="download">
+    </form>
+    <% } %>
+</body>
+</html>

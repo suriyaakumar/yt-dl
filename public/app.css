@@ -1,0 +1,64 @@
+html {
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;        
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    text-align: center;
+    width: 35vw;
+}
+
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.input-box{
+    outline: none;
+    padding: 10px;
+    margin-top: 0 auto;
+    width: 30vw;
+}
+
+.getinfo{
+    cursor: pointer;
+    display: block;
+    padding: 12px;
+    background-color: black;
+    width: 30vw;
+    margin: 10px auto;
+    color: white;
+    border: none;
+    box-sizing: content-box;
+}
+
+select {
+    width: 30vw;
+    padding: 10px;
+    outline: none;
+}
+
+img {
+    width: 25vw;
+    border: 0.5px solid black;
+    margin: 25px auto;
+    position: absolute;
+}
+
+.download {
+    display: block;
+    width: 30vw;
+    box-sizing: content-box;
+    cursor: pointer;
+    background-color: white;
+    padding: 12px;
+    border: 0.5px solid black;
+    margin: 10px auto;
+}
