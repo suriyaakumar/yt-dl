@@ -8,6 +8,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine','ejs');
 
+var port = process.env.PORT || 3000
+
 app.get('/', (req,res) => {
     res.render('home', {formats: null, title: null, thumbnail: null, value: null});
 });
@@ -30,6 +32,6 @@ app.get("/download", (req,res) => {
     ytdl(videoUrl,{filter: format => format.itag == itag}).pipe(res);
 });
 
-app.listen(3000, (req,res) => {
-    console.log("Server listening at port 3000");
+app.listen(port, (req,res) => {
+    console.log("Server listening at port" + port);
 });
