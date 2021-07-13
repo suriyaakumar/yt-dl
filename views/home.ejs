@@ -5,25 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>YouTube Downloader</title>
 </head>
 <body>
-    <h1>YouTube Downloader</h1>
-    <form action="/getinfo" method="GET">
+<div class="container">
+    <h3 class="center">YouTube Downloader</h3>
+    <div class="section">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+        <form action="/getinfo" method="GET">
         <label for="input">Enter YouTube Link</label>
         <input type="text" name="input" value="<% if(value) { %> <%= value %> <% } %>" placeholder="Enter Download Link" class="input-box" required>
         <input type="submit" class="getinfo" value="Download Video">
     </form>
-    <% if (thumbnail) { %>
-        <img src="<%= thumbnail.url %>" >
+</div>
+</div>
+</div>
+<div class="section">
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+    <% if (iframe) { %>
+        <div class="video-container">
+            <iframe src="<%= iframe %>" frameborder='0' allowfullscreen></iframe>
+        </div>
     <% } %>
-    <% if (title) { %>
-    <h4> <%= title %> </h4>
-    <% } %>
+</div>
+</div>
+</div>
+<% if (title) { %>
+<h6 class="center row"> <%= title %> </h6>
+<% } %>
+<div class="row">
+<div class="col s12 m6 offset-m3">
     <% if (formats) { %>
     <form action="/download" method="GET">
     <input type="hidden" name="value" value="<%= value %>">
-    <select name="itag">
+    <select name="itag" class="browser-default">
     <% for(var i = 0; i < formats.length; i++) { %>
     <% if(formats[i].container == "mp4" && formats[i].qualityLabel != null && formats[i].hasAudio == true && formats[i].hasVideo == true) { %>
     <option value= "<%= formats[i].itag %>" > <%= formats[i].container %> - <%= formats[i].qualityLabel  %> </option>
@@ -33,5 +51,8 @@
     <input type="submit" value="Download Video" class="download">
     </form>
     <% } %>
+</div>
+</div>
+</div>
 </body>
 </html>
