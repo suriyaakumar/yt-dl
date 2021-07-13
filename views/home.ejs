@@ -40,11 +40,11 @@
 <div class="col s12 m6 offset-m3">
     <% if (formats) { %>
     <form action="/download" method="GET">
-    <input type="hidden" name="value" value="<%= value %>">
+    <input type="hidden" name="value" value= " <%= value %> " >
     <select name="itag" class="browser-default">
     <% for(var i = 0; i < formats.length; i++) { %>
     <% if(formats[i].container == "mp4" && formats[i].qualityLabel != null && formats[i].hasAudio == true && formats[i].hasVideo == true) { %>
-    <option value= "<%= formats[i].itag %>" > <%= formats[i].container %> - <%= formats[i].qualityLabel  %> </option>
+    <option value= " <%= formats[i].itag %> " > <%= formats[i].container %> - <%= formats[i].qualityLabel  %> </option>
     <% } %>
     <% } %>
     </select>
