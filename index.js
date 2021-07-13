@@ -1,5 +1,4 @@
 var express = require('express');
-const { filterFormats } = require('ytdl-core');
 var ytdl = require('ytdl-core');
 var app = express();
 
@@ -11,7 +10,7 @@ app.set('view engine','ejs');
 var port = process.env.PORT || 3000
 
 app.get('/', (req,res) => {
-    res.render('home', {formats: null, title: null, thumbnail: null, value: null});
+    res.render('home', {formats: null, title: null, iframe: null, value: null});
 });
 
 app.get('/getinfo', async (req,res) => {
@@ -20,7 +19,7 @@ app.get('/getinfo', async (req,res) => {
     res.render('home', {
         formats: info.formats, 
         title: info.videoDetails.title, 
-        thumbnail: info.videoDetails.thumbnails[info.videoDetails.thumbnails.length - 1],
+        iframe: info.videoDetails.embed.iframeUrl,
         value: url
     });
 });
@@ -33,5 +32,5 @@ app.get("/download", (req,res) => {
 });
 
 app.listen(port, (req,res) => {
-    console.log("Server listening at port" + port);
+    console.log("Server listening at port " + port);
 });
