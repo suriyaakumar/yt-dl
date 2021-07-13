@@ -7,7 +7,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine','ejs');
 
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 3000;
 
 app.get('/', (req,res) => {
     res.render('home', {formats: null, title: null, iframe: null, value: null});
@@ -26,13 +26,12 @@ app.get('/getinfo', async (req,res) => {
 
 app.get("/download", (req,res) => {
     var videoUrl = req.query.value;
-    var obj = req.query.itag;
-    res.header("Content-Disposition",'attachment;\ filename="video.mp4"');
-    ytdl(videoUrl,{filter: format => format.itag == obj.itag})
+    var itag = req.query.itag;
+    res.header("content-disposition",'attachment; filename="video.mp4"');
+    ytdl(videoUrl,{filter: format => format.itag == itag})
     .on('response', response => {
-        res.setHeader("content-length", response.headers['content-length']);
-    })
-    .pipe(res);
+        res.setHeader("content-length",response.headers['content-length']);
+    }).pipe(res); 
 });
 
 app.listen(port, (req,res) => {
