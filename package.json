@@ -17,7 +17,6 @@
     "ytdl-core": "^4.11.0"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.0",
     "nodemon": "^2.0.12"
   }
 }
