@@ -11,10 +11,12 @@ var port = process.env.PORT || 3000;
 
 app.get('/', async (req,res) => {
     try {
-     res.render('home', {formats: null, title: null, iframe: null, value: null});
+     res.render('home', {formats: null, title: null, iframe: null, value: null, error: null});
     }
     catch (e) {
-        console.log(e)
+        res.render('home', {
+            formats: null, title: null, iframe: null, value: null, error: e.message
+        })
     }
 });
 
@@ -26,11 +28,14 @@ app.get('/getinfo', async (req,res) => {
         formats: info.formats, 
         title: info.videoDetails.title, 
         iframe: info.videoDetails.embed.iframeUrl,
-        value: url
+        value: url,
+        error: null
     });
     }
     catch (e) {
-        console.log(e)
+        res.render('home', {
+            formats: null, title: null, iframe: null, value: null, error: e.message
+        })
     }
 });
 
@@ -45,10 +50,10 @@ app.get("/download", async (req,res) => {
             }).pipe(res);
     }
     catch (e) {
-        console.log(e)
+        res.render('home', {
+         formats: null, title: null, iframe: null, value: null, error: e.message
+        })
     } 
 });
 
-app.listen(port, (req,res) => {
-    console.log("Server listening at port " + port);
-});
+app.listen(port, (req,res) => { console.log("Server listening at port " + port); });
