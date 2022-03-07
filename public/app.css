@@ -1,34 +1,3 @@
-label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.getinfo{
-    cursor: pointer;
-    display: block;
-    padding: 12px;
-    background-color: black;
-    width: 100%;
-    margin: 10px auto;
-    color: white;
-    border: none;
-    box-sizing: content-box;
-}
-
-.browser-default {
-    outline: none;
-    box-sizing: border-box !important;
-    border: 0.5px solid black !important;
-}
-
-.download {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-color: white;
-    padding: 12px;
-    border: 0.5px solid black;
-    margin: 10px auto;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
